@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Portfolio</title>
+    <link rel="icon" href="img/favicon.png?v=2" type="image/x-icon" />
+    <!--style tag-->
+    <style>
+      :root {
+        --h1-color: black;
+        --bold-color: rgb(170, 36, 36);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        background: url("img/backgroundimage.jpg") no-repeat center center fixed;
+      }
+
+      h1 {
+        color: var(--h1-color);
+        font-family: headerFont, sans-serif;
+        font-size: 50px;
+        display: inline-block;
+      }
+      .container {
+        width: 100%;
+        padding-left: 8%;
+        padding-right: 8%;
+        box-sizing: border-box;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .navbar {
+        width: 100%;
+        display: flex;
+        align-items: center;
+      }
+      .logo {
+        width: 90px;
+        height: 90px;
+        cursor: pointer;
+        margin: 30px 0;
+      }
+      .logoTitle {
+        width: 50px;
+        cursor: pointer;
+        margin: 30px 0;
+      }
+      .logoTitle:hover {
+        color: rgb(133, 25, 25);
+      }
+
+      .menu-icon {
+        width: 25px;
+        cursor: pointer;
+      }
+
+      nav {
+        flex: 1;
+        text-align: right;
+      }
+      nav ul li {
+        list-style: none;
+        display: inline-block;
+        margin-right: 30px;
+      }
+      nav ul li a {
+        text-decoration: none;
+        color: rgb(152, 6, 6);
+        font-size: 30px;
+        font-family: navbarFont, sans-serif;
+      }
+      nav ul li a:hover {
+        color: rgb(70, 62, 179);
+      }
+
+      @font-face {
+        font-family: headerFont;
+        src: url(fonts/Daviton\ DEMO.otf);
+      }
+
+      @font-face {
+        font-family: navbarFont;
+        src: url(fonts/Watermelon\ Days.ttf);
+      }
+
+      @font-face {
+        font-family: footerFont;
+        src: url(fonts/Lemon\ Days.ttf);
+      }
+      @font-face {
+        font-family: titleFont;
+        src: url(fonts/Tabuti.ttf);
+      }
+
+      @font-face {
+        font-family: labelFont;
+        src: url(fonts/Chewie.otf);
+      }
+
+      main {
+        text-align: center;
+      }
+
+      footer {
+        font-family: footerFont, sans-serif;
+      }
+      .bold {
+        color: var(--bold-color);
+        margin: 50px;
+      }
+
+      .pic {
+        display: flex;
+        justify-content: flex-end;
+        opacity: 80%;
+      }
+
+      .title {
+        position: relative;
+        text-align: center;
+        font-size: 25px;
+        font-family: titleFont, sans-serif;
+        color: #324254;
+      }
+
+      input[type="text"],
+      input[type="email"] {
+        width: 30%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      select {
+        width: 30%;
+        padding: 12px 20px;
+        margin: 8px;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      input[type="submit"] {
+        width: 10px;
+        background-color: #1b0a89;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+
+      legend,
+      label {
+        font-family: labelFont, sans-serif;
+        font-size: 20px;
+      }
+
+      .contact {
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      }
+
+      .contact p {
+        color: #1b0a89;
+      }
+
+      #footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+      }
+
+      #footer h3 {
+        color: white;
+        font-weight: 500;
+        font-size: 1.5rem;
+        letter-spacing: 0.1rem;
+        margin-top: 10px;
+        margin-bottom: 5px;
+      }
+
+      #footer .social-icon {
+        margin-bottom: 5px;
+      }
+
+      #footer .social-item {
+        max-width: 0.5vw;
+        font-size: 0.5em;
+        margin-left: 30px;
+      }
+
+      #footer #copyright {
+        font-family: sans-serif;
+        color: rgb(172, 169, 169);
+      }
+
+      @media screen and (max-width: 700px) {
+        nav ul {
+          width: 100%;
+          background: skyblue;
+          position: absolute;
+          top: 15px;
+          right: 0;
+          z-index: 2;
+        }
+        nav ul li {
+          display: block;
+          margin-top: 5px;
+          margin-bottom: 5px;
+        }
+        nav ul li a {
+          color: #fff;
+        }
+
+        .navbar img {
+          visibility: hidden;
+        }
+
+        .contact {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!--header-->
+    <header class="container">
+      <div class="navbar">
+        <!-- portfolio logo -->
+        <a href="index.html" class="header">
+          <picture>
+            <source type="image/svg+xml" srcset="img/logo.svg" />
+            <img class="logo" src="img/logo.png" alt="Portfolio logo" />
+          </picture>
+          <h1 class="logoTitle">Portfolio</h1>
+        </a>
+        <!--navbar -->
+        <nav class="menu">
+          <ul>
+            <li><a href="about.html" class="menu-btn">About</a></li>
+            <li><a href="services.html" class="menu-btn">Services</a></li>
+            <li><a href="projects.html" class="menu-btn">Projects</a></li>
+            <li><a href="contact.html" class="menu-btn">Contact</a></li>
+          </ul>
+        </nav>
+
+        <picture>
+          <source type="image/svg+xml" srcset="img/menu.svg" />
+          <img src="img/menu.png" class="menu-icon" alt="menu icon" />
+        </picture>
+      </div>
+    </header>
+
+    <!--main-->
+    <main>
+      <section class="title">
+        <h2><b>Contact</b></h2>
+      </section>
+
+      <!--hr tag-->
+      <hr />
+
+      <section class="contact">
+        <h2>Phone</h2>
+        <p>(714)-332-7287</p>
+
+        <h2>Email</h2>
+        <p>hmlim@ucsd.edu</p>
+
+        <h2>Location</h2>
+        <p>Sandiego, California</p>
+
+        <div>
+          <iframe
+            id="inlineFrameExample"
+            title="Inline Frame Example"
+            width="300"
+            height="200"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&layer=mapnik"
+          >
+          </iframe>
+        </div>
+      </section>
+
+      <div>
+        <form action="/action_page.php">
+          <fieldset>
+            <legend>Contact Form</legend>
+
+            <label for="name">Name:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your name.."
+            /><br /><br />
+            <label for="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Your email.."
+            /><br /><br />
+
+            <label for="location">Location:</label>
+            <select id="location" name="location">
+              <option value="California">California</option>
+              <option value="New York">New York</option>
+              <option value="Sanfrancisco">Sanfrancisco</option>
+              <option value="Other cities in the USA">
+                Other cities in the USA
+              </option>
+              <option value="Other countries">Other countries</option>
+            </select>
+            <br /><br />
+
+            <label for="message">Message:</label><br />
+            <textarea id="message" name="message" rows="4" cols="50"></textarea
+            ><br /><br />
+
+            <input type="submit" value="Submit" />
+          </fieldset>
+        </form>
+      </div>
+    </main>
+    <!--footer-->
+    <footer id="footer">
+      <div>
+        <h3>Follow me</h3>
+        <div class="social-icon">
+          <a class="social-item" href="#">
+            <picture>
+              <source
+                type="image/svg+xml"
+                srcset="img/instagram.svg"
+                width="30"
+                height="30"
+              />
+              <img src="./img/instagram.png" alt="Instagram logo" /> </picture
+          ></a>
+          <a class="social-item" href="#">
+            <picture>
+              <source
+                type="image/svg+xml"
+                srcset="img/facebook.svg"
+                width="30"
+                height="30"
+              />
+              <img src="./img/facebook.png" alt="Facebook logo" /> </picture
+          ></a>
+          <a class="social-item" href="#">
+            <picture>
+              <source
+                type="image/svg+xml"
+                srcset="img/youtube.svg"
+                width="30"
+                height="30"
+              />
+              <img src="./img/youtube.png" alt="Youtube logo" /> </picture
+          ></a>
+          <a class="social-item" href="#">
+            <picture>
+              <source
+                type="image/svg+xml"
+                srcset="img/github.svg"
+                width="30"
+                height="30"
+              />
+              <img src="./img/github.png" alt="Github logo" /> </picture
+          ></a>
+        </div>
+        <div id="copyright">
+          <p>Copyright ©2022 Hyunmin. All rights reserved</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

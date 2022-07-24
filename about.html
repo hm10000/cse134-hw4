@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Portfolio</title>
+    <link rel="icon" href="img/favicon.png?v=2" type="image/x-icon" />
+
+    <!--style tag-->
+    <style>
+      :root {
+        --h1-color: black;
+        --bold-color: rgb(170, 36, 36);
+      }
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        background: url("img/backgroundimage.jpg") no-repeat center center fixed;
+      }
+
+      h1 {
+        font-family: headerFont, sans-serif;
+        color: var(--h1-color);
+        font-size: 50px;
+        display: inline-block;
+      }
+      .container {
+        width: 100%;
+        padding-left: 8%;
+        padding-right: 8%;
+        box-sizing: border-box;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .navbar {
+        width: 100%;
+        display: flex;
+        align-items: center;
+      }
+      .logo {
+        width: 90px;
+        height: 90px;
+        cursor: pointer;
+        margin: 30px 0;
+      }
+      .logoTitle {
+        width: 50px;
+        cursor: pointer;
+        margin: 30px 0;
+      }
+      .logoTitle:hover {
+        color: rgb(133, 25, 25);
+      }
+
+      .menu-icon {
+        width: 25px;
+        cursor: pointer;
+      }
+
+      nav {
+        flex: 1;
+        text-align: right;
+      }
+      nav ul li {
+        list-style: none;
+        display: inline-block;
+        margin-right: 30px;
+      }
+      nav ul li a {
+        text-decoration: none;
+        color: rgb(152, 6, 6);
+        font-size: 30px;
+        font-family: navbarFont, sans-serif;
+      }
+      nav ul li a:hover {
+        color: rgb(70, 62, 179);
+      }
+
+      @font-face {
+        font-family: headerFont;
+        src: url(fonts/Daviton\ DEMO.otf);
+      }
+
+      @font-face {
+        font-family: navbarFont;
+        src: url(fonts/Watermelon\ Days.ttf);
+      }
+
+      @font-face {
+        font-family: footerFont;
+        src: url(fonts/Lemon\ Days.ttf);
+      }
+
+      @font-face {
+        font-family: titleFont;
+        src: url(fonts/Tabuti.ttf);
+      }
+
+      @font-face {
+        font-family: contentFont;
+        src: url(fonts/Lemon\ Days.ttf);
+      }
+
+      @font-face {
+        font-family: tabletitleFont;
+        src: url(fonts/Waffle\ Story.ttf);
+      }
+
+      @font-face {
+        font-family: tablecontentFont;
+        src: url(fonts/LoveChristabelaRegular.ttf);
+      }
+
+      footer {
+        font-family: footerFont, sans-serif;
+      }
+
+      figure img {
+        max-width: 70%;
+        height: auto;
+      }
+
+      .bold {
+        color: var(--bold-color);
+        margin: 50px;
+      }
+
+      .title {
+        position: relative;
+        text-align: center;
+        font-size: 25px;
+        font-family: titleFont, sans-serif;
+        color: #324254;
+      }
+
+      .contain {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .contain p {
+        font-family: contentFont, sans-serif;
+        color: rgb(70, 62, 179);
+        margin-top: 200px;
+      }
+
+      .navbar img {
+        visibility: hidden;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        margin: 50px 50px 50px 250px;
+      }
+
+      figcaption {
+        font-family: footerFont, sans-serif;
+        color: rgb(45, 35, 121);
+      }
+      caption {
+        font-family: contentFont, sans-serif;
+        font-size: 20px;
+      }
+
+      th {
+        font-family: tabletitleFont, sans-serif;
+      }
+
+      td {
+        font-family: tablecontentFont, sans-serif;
+        font-size: 30px;
+        padding: 5px;
+      }
+
+      #footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+      }
+
+      #footer h3 {
+        color: white;
+        font-weight: 500;
+        font-size: 1.5rem;
+        letter-spacing: 0.1rem;
+        margin-top: 10px;
+        margin-bottom: 5px;
+      }
+
+      #footer .social-icon {
+        margin-bottom: 5px;
+      }
+
+      #footer .social-item {
+        max-width: 0.5vw;
+        font-size: 0.5em;
+        margin-left: 30px;
+      }
+
+      #footer #copyright {
+        font-family: sans-serif;
+        color: rgb(172, 169, 169);
+      }
+
+      @media screen and (max-width: 700px) {
+        nav ul {
+          width: 100%;
+          background: skyblue;
+          position: absolute;
+          top: 15px;
+          right: 0;
+          z-index: 2;
+        }
+        nav ul li {
+          display: block;
+          margin-top: 5px;
+          margin-bottom: 5px;
+        }
+        nav ul li a {
+          color: #fff;
+        }
+
+        .contain {
+          display: flex;
+          flex-direction: column;
+        }
+
+        table,
+        th,
+        td {
+          visibility: hidden;
+        }
+
+        .navbar img {
+          visibility: hidden;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!--header-->
+    <header class="container">
+      <div class="navbar">
+        <!-- portfolio logo -->
+        <a href="index.html" class="header">
+          <picture>
+            <source type="image/svg+xml" srcset="img/logo.svg" />
+            <img class="logo" src="img/logo.png" alt="Portfolio logo" />
+          </picture>
+          <h1 class="logoTitle">Portfolio</h1>
+        </a>
+        <!--navbar -->
+        <nav class="menu">
+          <ul>
+            <li><a href="about.html" class="menu-btn">About</a></li>
+            <li><a href="services.html" class="menu-btn">Services</a></li>
+            <li><a href="projects.html" class="menu-btn">Projects</a></li>
+            <li><a href="contact.html" class="menu-btn">Contact</a></li>
+          </ul>
+        </nav>
+
+        <picture>
+          <source type="image/svg+xml" srcset="img/menu.svg" />
+          <img src="img/menu.png" class="menu-icon" alt="menu icon" />
+        </picture>
+      </div>
+    </header>
+
+    <!--main-->
+    <main>
+      <section class="title">
+        <h2><b>About Me</b></h2>
+      </section>
+
+      <!--hr tag-->
+      <hr />
+
+      <!--aside tag-->
+      <aside>
+        <div class="contain">
+          <!--figure and figcaption tag-->
+          <figure>
+            <img src="./img/portraitphoto2.jpg" alt="Portraitphoto" />
+            <figcaption>Portraitphoto</figcaption>
+          </figure>
+          <p>
+            My name is <em>Hyunmin Lim</em>. I'm a student at UCSD. I'm majoring
+            in computers science. I'm a passionate person and team player.
+            <span>I want to be a software engineer after graduation. </span> I
+            have skills about <strong>Web development, React</strong>.
+          </p>
+        </div>
+
+        <table>
+          <caption>
+            My Timeline
+          </caption>
+
+          <colgroup>
+            <col style="background-color: lightcyan" />
+            <col span="3" style="background-color: lightgoldenrodyellow" />
+          </colgroup>
+
+          <tr>
+            <th>Job title</th>
+            <th>Begin - end date</th>
+            <th>Company</th>
+            <th>Job description</th>
+          </tr>
+          <tr>
+            <td>Frontend developer</td>
+            <td>6/20/2020- 8/20/2020</td>
+            <td>Startup</td>
+            <td>
+              I was responsible for using their knowledge of programming
+              languages to code user-side applications, including visual
+              elements like menu bars, clickable buttons and the overall layout
+              of websites or web applications
+            </td>
+          </tr>
+          <tr>
+            <td>Frontend developer</td>
+            <td>6/22/2021- 8/18/2021</td>
+            <td>Startup</td>
+            <td>
+              I was responsible for using their knowledge of programming
+              languages to code user-side applications, including visual
+              elements like menu bars, clickable buttons and the overall layout
+              of websites or web applications
+            </td>
+          </tr>
+        </table>
+      </aside>
+    </main>
+
+    <!--footer-->
+    <footer id="footer">
+      <div>
+        <h3>Follow me</h3>
+        <div class="social-icon">
+          <a class="social-item" href="#">
+            <picture>
+              <source
+                type="image/svg+xml"
+                srcset="img/instagram.svg"
+                width="30"
+                height="30"
+              />
+              <img src="./img/instagram.png" alt="Instagram logo" /> </picture
+          ></a>
+          <a class="social-item" href="#">
+            <picture>
+              <source
+                type="image/svg+xml"
+                srcset="img/facebook.svg"
+                width="30"
+                height="30"
+              />
+              <img src="./img/facebook.png" alt="Facebook logo" /> </picture
+          ></a>
+          <a class="social-item" href="#">
+            <picture>
+              <source
+                type="image/svg+xml"
+                srcset="img/youtube.svg"
+                width="30"
+                height="30"
+              />
+              <img src="./img/youtube.png" alt="Youtube logo" /> </picture
+          ></a>
+          <a class="social-item" href="#">
+            <picture>
+              <source
+                type="image/svg+xml"
+                srcset="img/github.svg"
+                width="30"
+                height="30"
+              />
+              <img src="./img/github.png" alt="Github logo" /> </picture
+          ></a>
+        </div>
+        <div id="copyright">
+          <p>Copyright ©2022 Hyunmin. All rights reserved</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
