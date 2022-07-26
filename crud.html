@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Posts</title>
+
+    <script type="module">
+      let editID = 0;
+      const editDialog = document.getElementById("editDialog");
+
+      const okEdit = document
+        .getElementById("okDialog")
+        .addEventListener("click", okEditDialog);
+
+      const closeEdit = document
+        .getElementById("cancelDialog")
+        .addEventListener("click", closeEditDialog);
+
+      //editDialog
+      function closeEditDialog() {
+        editDialog.close();
+      }
+      //editDialog
+      function okEditDialog() {
+        editDialog.close();
+      }
+
+      function showEditDialog() {
+        editDialog.show();
+      }
+
+      import * as Posts from "./blog.js";
+
+      const itemPosts = Posts.selectAllPosts();
+      const itmPosts = Object.keys(itemPosts);
+      // for(let i = 0; i < itmPosts.length; i++) {
+      // }
+
+      document.addEventListener("DOMContentLoaded", (_ev) => {
+        // First, let's display what we've got.
+        const postsContainer = document.getElementById("posts");
+        Posts.redisplayAllPosts(postsContainer);
+
+        // Now, let's set up our form so we can use it for adding posts.
+        const addPostForm = document.getElementById("insert-post-form");
+
+        addPostForm.addEventListener("submit", (ev) => {
+          // Stop the form submission event from continuing and refreshing the page.
+          ev.preventDefault();
+
+          // Load the data from the form into a FormData.
+          const formData = new FormData(ev.target);
+
+          // The names of our form fields are identical to our book JSON, so just copy it over.
+          const post = {};
+          for (const [key, value] of formData.entries()) {
+            post[key] = value;
+          }
+
+          // Insert the new book we just made and redisplay the books!
+          Posts.insertPost(post);
+          Posts.redisplayAllPosts(postsContainer);
+        });
+
+        const deletePost = Array.from(document.querySelectorAll(".delete"));
+
+        const editPost = Array.from(document.querySelectorAll(".edit"));
+
+        //Delete
+        if (deletePost.length == 1) {
+          Posts.deletePost(itmPosts[0]);
+        } else {
+          for (let i = 0; i < deletePost.length; i++) {
+            deletePost[i].addEventListener("submit", (ev) => {
+              Posts.deletePost(itmPosts[i]);
+            });
+          }
+        }
+
+        //Edit
+
+        //   console.log(editPost);
+
+        //  for (let i = 0; i < editPost.length; i++) {
+        //     editPost[i].addEventListener("submit", (ev) => {
+        //       editID++;
+        //     });
+        //   }
+
+        //   console.log(editID);
+      });
+    </script>
+
+    <template id="post-template">
+      <post-article>
+        <post-title>
+          <h1>Title</h1>
+          <p>Date</p>
+        </post-title>
+        <post-summary>
+          <p>Lorem ipsum dolor sit amet...</p>
+        </post-summary>
+        <post-edit>
+          <form class="edit" action="">
+            <input type="submit" value="Edit" />
+          </form>
+        </post-edit>
+        <post-delete>
+          <form class="delete" action="">
+            <input type="submit" value="Delete" />
+          </form>
+        </post-delete>
+      </post-article>
+    </template>
+  </head>
+
+  <body>
+    <header>
+      <h1>Blog Posts Database</h1>
+    </header>
+
+    <main>
+      <section id="posts"></section>
+      <section>
+        <form id="insert-post-form" action="">
+          <fieldset>
+            <legend>Add a post</legend>
+            <label for="title">Title</label>
+            <input type="text" name="title" />
+            <label for="date">Date</label>
+            <input type="text" name="date" />
+            <label for="summary">Summary</label>
+            <textarea name="summary" cols="65" rows="10"></textarea>
+            <input type="submit" value="Add Post" />
+          </fieldset>
+        </form>
+      </section>
+    </main>
+
+    <dialog id="editDialog">
+      <section id="posts"></section>
+      <section>
+        <form id="update-post-form" action="">
+          <fieldset>
+            <legend>Edit a post</legend>
+            <label for="title">Title</label>
+            <input type="text" name="title" />
+            <label for="date">Date</label>
+            <input type="text" name="date" />
+            <label for="summary">Summary</label>
+            <textarea name="summary" cols="65" rows="10"></textarea>
+            <button id="cancelDialog">Cancel</button>
+            <button id="okDialog">OK</button>
+          </fieldset>
+        </form>
+      </section>
+    </dialog>
+  </body>
+</html>

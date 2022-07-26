@@ -1,1 +1,130 @@
-<!--This is nativdialog-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      output {
+        font-size: 16px;
+        border-style: double;
+        padding: 10px;
+        width: 200px;
+        display: none;
+      }
+
+      .customDialog button {
+        float: right;
+      }
+    </style>
+    <script type="module" src="customdialog.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.10/purify.min.js"></script>
+  </head>
+  <body>
+    <h1>Simple Dialogs?</h1>
+
+    <button id="alertBtn">Alert</button>
+    <button id="confirmBtn">Confirm</button>
+    <button id="promptBtn">Prompt</button>
+    <button id="spromptBtn">Safer Prompt</button>
+
+    <hr />
+    <output id="result"></output>
+
+    <h1>Custom Dialogs?</h1>
+    <button id="btnAlert">Alert</button>
+    <button id="btnConfirm">Confirm</button>
+    <button id="btnPrompt">Prompt</button>
+
+    <hr />
+
+    <output id="result2"></output>
+    <dialog id="alertDialog">
+      <p>Alert pressed!</p>
+      <button id="closeAlt">Ok</button>
+    </dialog>
+
+    <dialog id="confirmDialog">
+      <p>Do you confirm this?</p>
+      <button id="cancelConfirm">Cancel</button>
+      <button id="okConfirm">Ok</button>
+    </dialog>
+
+    <dialog id="promptDialog">
+      <label for="yourName">What is your name?</label><br />
+      <input type="text" id="yourName" name="yourName" size="50" /><br /><br />
+      <button id="closePromptDialog">Cancel</button>
+      <button id="okPromptDialog">Ok</button>
+    </dialog>
+    <script>
+      document
+        .getElementById("alertBtn")
+        .addEventListener("click", alertFunction);
+
+      document
+        .getElementById("confirmBtn")
+        .addEventListener("click", confirmFunction);
+
+      document
+        .getElementById("promptBtn")
+        .addEventListener("click", promptFunction);
+
+      document
+        .getElementById("spromptBtn")
+        .addEventListener("click", spromptFunction);
+
+      //alertFunction
+      function alertFunction() {
+        alert("Alert pressed!");
+      }
+
+      //DOMPurify
+      function cleanData(userInput) {
+        // console.log(userInput);
+        return DOMPurify.sanitize(userInput);
+      }
+
+      //confirmFunction
+      function confirmFunction() {
+        let text = "Do you confirm this?";
+        if (confirm(text) == true) {
+          text = `The value returned by the confirm method is : true}`;
+        } else {
+          text = `The value returned by the confirm method is : false}`;
+        }
+        document.getElementById("result").style.display = "block";
+        document.getElementById("result").innerHTML = text;
+      }
+
+      //promptFunction
+      function promptFunction() {
+        let name = prompt("What is your name?");
+        if (name != null && name != "") {
+          document.getElementById("result").style.display = "block";
+          document.getElementById(
+            "result"
+          ).innerHTML = `Prompt result: ${name}`;
+        } else {
+          document.getElementById("result").style.display = "block";
+          document.getElementById("result").innerHTML =
+            "User didn't enter anything";
+        }
+      }
+
+      //saferpromptFunction
+      function spromptFunction() {
+        let name = prompt("What is your name?");
+        if (name != null && name != "") {
+          document.getElementById("result").style.display = "block";
+          const data = cleanData(`Prompt result: ${name}`);
+          document.getElementById("result").innerHTML = data;
+        } else {
+          document.getElementById("result").style.display = "block";
+          document.getElementById("result").innerHTML =
+            "User didn't enter anything";
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+:root {
+  --vw-lg: 1920px;
+  --vw-md: 1366px;
+  --vw-sm: 600px;
+
+  --primary-color: #738691;
+  --secondary-color: #4a8b1f;
+  --accent-color-1: #00c6d7;
+  --accent-color-2: #fc8900;
+  --neutral-dark: #000000;
+  --neutral-medium: #747678;
+  --neutral-light: #d7d9e8;
+  --neutral-xlight: #d7d0e5;
+}
+
+/* General Styles 
+   -------------- */
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  background-color: var(--bg-color);
+}
+
+body > header h1 {
+  font-size: 3rem;
+}
+
+p {
+  font-weight: bold;
+  line-height: 1.618rem;
+}
+
+body {
+  display: grid;
+}
+
+main > section {
+  margin-bottom: 2em;
+}
+
+#posts {
+  display: grid;
+  /* Fit as many horizontal as possible, such that each
+       is no smaller than 65ex (ex = width of the letter 'x') */
+  grid-template-columns: repeat(auto-fill, minmax(45ch, 1fr));
+  gap: 1rem;
+}
+
+#insert-post-form :is(input, textarea) {
+  display: block;
+}
+
+/* Post Article Styles 
+   ------------------- */
+
+post-article {
+  display: grid;
+  grid-template-rows: 10ch auto;
+  grid-template-columns: 10ex 1fr;
+  gap: 1em;
+
+  padding: 1rem;
+  border: 1px solid var(--neutral-light);
+
+  background-color: var(--neutral-xlight);
+
+  /* Setting font-size explicitly here means that in all of the
+       selectors below, we can use X em to mean X times this size.
+       Since it's set to 1rem, it's the user's default size. 
+       This makes our book articles scale nicely and respect the
+       user's font sizing choices (for readability, for example). */
+  font-size: 1rem;
+}
+
+/* Post Styles - Grid Only */
+
+post-article > post-title {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+/* Post Styles - Other */
+
+post-title {
+  display: flex;
+  flex-direction: column;
+}
+
+post-title > h1 {
+  margin: 0;
+  font-size: 1.5em;
+  vertical-align: top;
+}
+
+post-title > p {
+  margin-top: 0;
+  font-weight: 600;
+}
+
+post-summary {
+  display: flex;
+  overflow-y: scroll;
+  justify-content: center;
+
+  border-top: 1px solid var(--neutral-light);
+}
+
+post-summary > p {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
