@@ -3,6 +3,7 @@
 Answer: I used Google Analytics for tracking for 3rd party Javascript.
 I added
 
+```
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script
       async
@@ -17,6 +18,7 @@ gtag("js", new Date());
 
       gtag("config", "G-KE8DS5WDVP");
     </script>
+```
 
 in all html files related to my website. So I can track the user by using Google Analytics.
 The reason why I chose this is to analyze the visitors. Google Analytics offers data visualization
