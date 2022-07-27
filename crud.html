@@ -53,15 +53,16 @@
           // Load the data from the form into a FormData.
           const formData = new FormData(ev.target);
 
-          // The names of our form fields are identical to our book JSON, so just copy it over.
+          // The names of our form fields are identical to our post JSON, so just copy it over.
           const post = {};
           for (const [key, value] of formData.entries()) {
             post[key] = value;
           }
 
-          // Insert the new book we just made and redisplay the books!
+          // Insert the new post we just made and redisplay the posts!
           Posts.insertPost(post);
           Posts.redisplayAllPosts(postsContainer);
+          window.location.reload();
         });
 
         const deletePost = Array.from(document.querySelectorAll(".delete"));
@@ -69,27 +70,42 @@
         const editPost = Array.from(document.querySelectorAll(".edit"));
 
         //Delete
-        if (deletePost.length == 1) {
-          Posts.deletePost(itmPosts[0]);
-        } else {
-          for (let i = 0; i < deletePost.length; i++) {
-            deletePost[i].addEventListener("submit", (ev) => {
-              Posts.deletePost(itmPosts[i]);
-            });
-          }
+        for (let i = 0; i < deletePost.length; i++) {
+          deletePost[i].addEventListener("click", (ev) => {
+            Posts.deletePost(itmPosts[i]);
+            window.location.reload();
+          });
         }
 
-        //Edit
+        //   //Edit
+        for (let i = 0; i < editPost.length; i++) {
+          editPost[i].addEventListener("click", (ev) => {
+            const editId = ev.target.parentElement.parentElement.dataset.postId;
 
-        //   console.log(editPost);
+            // Now, let's set up our form so we can use it for updating posts.
+            const updatePostForm = document.getElementById("update-post-form");
 
-        //  for (let i = 0; i < editPost.length; i++) {
-        //     editPost[i].addEventListener("submit", (ev) => {
-        //       editID++;
-        //     });
-        //   }
+            showEditDialog();
 
-        //   console.log(editID);
+            updatePostForm.addEventListener("submit", (ev) => {
+              // Stop the form submission event from continuing and refreshing the page.
+              ev.preventDefault();
+
+              // Load the data from the form into a FormData.
+              const formData = new FormData(ev.target);
+
+              // The names of our form fields are identical to our post JSON, so just copy it over.
+              const post = {};
+              for (const [key, value] of formData.entries()) {
+                post[key] = value;
+              }
+
+              // Edit the new post we just made and redisplay the posts!
+              Posts.updatePost(editId, post);
+              window.location.reload();
+            });
+          });
+        }
       });
     </script>
 
@@ -103,14 +119,10 @@
           <p>Lorem ipsum dolor sit amet...</p>
         </post-summary>
         <post-edit>
-          <form class="edit" action="">
-            <input type="submit" value="Edit" />
-          </form>
+          <button class="edit">Edit</button>
         </post-edit>
         <post-delete>
-          <form class="delete" action="">
-            <input type="submit" value="Delete" />
-          </form>
+          <button class="delete">Delete</button>
         </post-delete>
       </post-article>
     </template>
@@ -151,8 +163,8 @@
             <input type="text" name="date" />
             <label for="summary">Summary</label>
             <textarea name="summary" cols="65" rows="10"></textarea>
-            <button id="cancelDialog">Cancel</button>
-            <button id="okDialog">OK</button>
+            <input type="button" id="cancelDialog" value="Cancel" />
+            <input type="submit" id="okDialog" value="OK" />
           </fieldset>
         </form>
       </section>

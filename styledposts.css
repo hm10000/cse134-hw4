@@ -10,7 +10,7 @@
   --neutral-dark: #000000;
   --neutral-medium: #747678;
   --neutral-light: #d7d9e8;
-  --neutral-xlight: #d7d0e5;
+  --neutral-xlight: #b4a4d3;
 }
 
 /* General Styles 
@@ -19,7 +19,7 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  background-color: var(--bg-color);
+  background-color: rgb(247, 243, 243);
 }
 
 body > header h1 {
@@ -48,6 +48,10 @@ main > section {
 }
 
 #insert-post-form :is(input, textarea) {
+  display: block;
+}
+
+#update-post-form :is(input, textarea) {
   display: block;
 }
 

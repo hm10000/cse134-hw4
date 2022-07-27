@@ -43,7 +43,7 @@ function storePosts(posts) {
 /**
  * (CREATE) Add a new post to the DB.
  * @param {Post} [Post] the post to be added to the DB.
- * @returns {String} the generated UUID for this book in the DB.
+ * @returns {String} the generated UUID for this post in the DB.
  */
 export function insertPost(post) {
   const posts = loadPosts();
@@ -85,7 +85,7 @@ export function updatePost(postId, post) {
 
   posts[postId] = post;
 
-  storePosts();
+  storePosts(posts);
 }
 
 /**
@@ -135,8 +135,8 @@ export function renderPost(postId, post) {
   const summaryP = postEl.querySelector("post-summary > p");
   summaryP.textContent = post.summary;
 
-  const editP = postEl.querySelector("post-edit > input");
-  const deleteP = postEl.querySelector("post-delete > input");
+  const editP = postEl.querySelector("post-edit > button");
+  const deleteP = postEl.querySelector("post-delete > button");
 
   return postEl;
 }
