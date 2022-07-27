@@ -1,3 +1,14 @@
+# Site Changes
+
+I changed the map to UCSD which is relevant to our location.
+
+Firstly, the map shows the location which is different from Sandieo location.
+
+I changed the contact's content order. I moved the position of map to the right side of the website by using flex.
+I also moved to the phone, email, location part to the left side by using flex.
+I used the padding, so I modified the space between title phone and phone number, title email and email contents etc..
+I styled the contact form.
+
 # 3rd Party Script
 
 Answer: I used Google Analytics for tracking for 3rd party Javascript.

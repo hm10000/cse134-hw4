@@ -72,7 +72,7 @@ post-article {
   /* Setting font-size explicitly here means that in all of the
        selectors below, we can use X em to mean X times this size.
        Since it's set to 1rem, it's the user's default size. 
-       This makes our book articles scale nicely and respect the
+       This makes our post articles scale nicely and respect the
        user's font sizing choices (for readability, for example). */
   font-size: 1rem;
 }

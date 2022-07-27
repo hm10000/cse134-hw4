@@ -104,7 +104,7 @@
         src: url(fonts/Chewie.otf);
       }
 
-      main {
+      form {
         text-align: center;
       }
 
@@ -133,22 +133,24 @@
       input[type="text"],
       input[type="email"] {
         width: 30%;
-        padding: 12px 20px;
+        padding: 12px 30px;
         margin: 8px 0;
         display: inline-block;
         border: 1px solid #ccc;
-        border-radius: 4px;
+        border-radius: 10px;
         box-sizing: border-box;
+        box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
       }
 
       select {
         width: 30%;
         padding: 12px 20px;
-        margin: 8px;
+        margin: 8px 50px 0 2px;
         display: inline-block;
         border: 1px solid #ccc;
-        border-radius: 4px;
+        border-radius: 10px;
         box-sizing: border-box;
+        box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
       }
 
       input[type="submit"] {
@@ -158,12 +160,24 @@
         padding: 10px 80px 10px 50px;
         margin: 8px 0;
         border: none;
-        border-radius: 4px;
+        border-radius: 10px;
         cursor: pointer;
+        box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
       }
 
       input[type="submit"]:hover {
         background-color: #45a049;
+      }
+
+      textarea {
+        width:35%;
+        padding: 12px 20px;
+        margin: 8px;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-sizing: border-box;
+        box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
       }
 
       legend,
@@ -172,12 +186,31 @@
         font-size: 20px;
       }
 
-      .contact {
+      .contact{
         font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-around;
       }
 
       .contact p {
         color: #1b0a89;
+      }
+
+      #phone,
+      #em,
+      #loc {
+        display: flex;
+        flex-direction: row;
+        padding: 50px;
+      }
+
+      #phoneH, #emH, #loH {
+        padding: 0px 50px 0 30px;
+      }
+
+      #phone > p, #em > p, #loc > p {
+        font-size: 25px;
       }
 
       #footer {
@@ -281,24 +314,29 @@
       <hr />
 
       <section class="contact">
-        <h2>Phone</h2>
-        <p>(714)-332-7287</p>
-
-        <h2>Email</h2>
-        <p>hmlim@ucsd.edu</p>
-
-        <h2>Location</h2>
-        <p>Sandiego, California</p>
-
         <div>
+          <div id="phone">
+            <h2 id="phoneH">Phone</h2>
+            <p>(714)-332-7287</p>
+          </div>
+          <div id="em">
+            <h2 id="emH">Email</h2>
+            <p>hmlim@ucsd.edu</p>
+          </div>
+          <div id="loc">
+            <h2 id="loH">Location</h2>
+            <p>Sandiego, California</p>
+          </div>
+        </div>
           <iframe
-            id="inlineFrameExample"
-            title="Inline Frame Example"
-            width="300"
-            height="200"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&layer=mapnik"
-          >
-          </iframe>
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3350.684544719831!2d-117.23620218403009!3d32.88006488602947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dc06c4414caf4f%3A0xefb6aafc89913ea7!2sUniversity%20of%20California%20San%20Diego!5e0!3m2!1sen!2sus!4v1658894075179!5m2!1sen!2sus"
+            width="400"
+            height="350"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
         </div>
       </section>
 
@@ -334,7 +372,7 @@
             </select>
             <br /><br />
 
-            <label for="message">Message:</label><br />
+            <label for="message" id="message">Message:</label><br />
             <textarea id="message" name="message" rows="4" cols="50"></textarea
             ><br /><br />
 
